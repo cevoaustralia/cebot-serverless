@@ -1,3 +1,17 @@
+# Cebot
+
+Forked from https://github.com/awslabs/aws-serverless-chatbot-sample
+
+## Deploying
+
+* Obtain AWS credentials, perhaps in your runtime environment
+* `make`
+
+That's it.
+
+--------------
+# ORIGINAL README
+
 # AWS Serverless Chatbot Sample
 Example code for running a Slack chatbot using AWS Lambda and Amazon API Gateway. 
 

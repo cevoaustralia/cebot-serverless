@@ -5,7 +5,7 @@ ZIP_ARGS := -9r
 STACK := chatbot
 BUCKET := grogan-splorgin
 
-all: stack
+all: test
 
 $(PKG): 
 	rm -f $(PKG)

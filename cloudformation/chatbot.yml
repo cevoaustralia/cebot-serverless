@@ -23,6 +23,9 @@ Parameters:
     Type: String
     Description: The path, including prefixes, to the zipfile containing the chatbot code in the S3 bucket
     Default: chatbot.zip
+  CodeVersion:
+    Type: String
+    Description: The S3 versionId of the code in the S3 bucket
 
 Resources:
   ChatBotFunction:
@@ -31,6 +34,7 @@ Resources:
       Code:
         S3Bucket: !Ref CodeS3Bucket
         S3Key: !Ref CodeZipfile
+        S3ObjectVersion: !Ref CodeVersion
       Description: Provides a simple chatbot function for Slack
       Handler: bot.lambda_handler
       MemorySize: !Ref LambdaFunctionMemory

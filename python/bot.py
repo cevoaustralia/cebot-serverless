@@ -131,6 +131,7 @@ def lambda_handler(event, context):
         command, service, options))
     resp = commands[command](service, _options_to_dict(options))
 
-    return {
-        'text': "{0}".format(resp)
-    }
+    response = {'text':"{0}".format(resp)}
+    log.debug("[lambda_handler] returning: '{0}".format(response))
+
+    return response

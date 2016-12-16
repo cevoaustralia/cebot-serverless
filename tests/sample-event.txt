@@ -1,0 +1,1 @@
+token=yRLmbMabcd1234abcd1234ab&team_id=T0D01010H&team_domain=testdomain&channel_id=C0GABCD12&channel_name=testing&timestamp=1481850163.000005&user_id=U0DABCD12&user_name=test&text=%%TRIGGER_WORD%% help&trigger_word=%%TRIGGER_WORD%%

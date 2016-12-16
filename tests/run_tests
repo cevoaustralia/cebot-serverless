@@ -1,0 +1,31 @@
+#!/bin/bash
+
+TRIGGER=testbot
+
+if [ $# -ne 1 ]; then
+    echo "usage: $0 <stack-name>"
+    exit 1
+fi
+
+STACK=$1
+TMPFILE=$( mktemp )
+cleanup () {
+    rm -f $TMPFILE
+}
+trap cleanup EXIT
+
+URL=$( aws cloudformation describe-stacks \
+        --stack-name $STACK \
+        --query 'Stacks[].Outputs[?OutputKey==`ChatBotURL`][].OutputValue' \
+        --output text )
+
+sed -e "s/%%TRIGGER_WORD%%/$TRIGGER/g" sample-event.txt > $TMPFILE
+RESP=$( curl --silent -d @$TMPFILE $URL )
+RES=$?
+
+if [ $RES -ne 0 ] || ! echo "$RESP" | grep -q '{"text":'; then
+    echo "FAIL: '$RESP' did not include '{\"text\":'"
+    exit 1
+fi
+
+echo All tests PASS

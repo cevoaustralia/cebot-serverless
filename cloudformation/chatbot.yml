@@ -186,3 +186,8 @@ Resources:
     Properties:
       Description: Go live
       RestApiId: !Ref ChatBotAPI
+
+Outputs:
+  ChatBotURL:
+    Description: The value to paste into Slack
+    Value: !Sub https://${ChatBotAPI}.execute-api.${AWS::Region}.amazonaws.com/production/
